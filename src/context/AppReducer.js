@@ -5,15 +5,25 @@ export default (state, action) => {
                ...state,
                users: [...state.users, action.payload]
             }
-        case 'LOGIN_USER':
-            return {
-               ...state,
-               loggedIn: true
-            }
         case 'GET_USERS':
             return {
                 ...state,
                 users: action.payload,
+            }
+        case 'GET_POSTS':
+            return {
+                ...state,
+                posts: action.payload
+            }
+        case 'LOGIN_USER':
+            return {
+               ...state,
+                loggedIn: true
+              }
+        case 'LOGOUT_USER':
+            return {
+                ...state,
+                loggedIn: false
             }
         default: 
             return state; 
