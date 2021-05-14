@@ -102,6 +102,25 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    async function addPost(post) {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const res = await axios.post('http://localhost:5000/posts', post, config)
+            dispatch({
+                type: 'ADD_POST',
+                payload: res.data
+            })
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <GlobalContext.Provider value={{
             users: state.users,
@@ -110,7 +129,8 @@ export const GlobalProvider = ({ children }) => {
             registerUser,
             loginUser,
             logoutUser,
-            getPosts
+            getPosts,
+            addPost
         }}>
             {children}
         </GlobalContext.Provider>

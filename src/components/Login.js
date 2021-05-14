@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react'
+import { Link } from 'react-router-dom'
 import { GlobalContext } from '../context/GlobalState'
 
 export const Login = () => {
@@ -33,7 +34,8 @@ export const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit">Login</button>
+                    <Link to="/"><button type="submit">Login</button></Link>
+                    
                 </form>
             </div>
         </>

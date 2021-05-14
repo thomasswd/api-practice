@@ -15,6 +15,11 @@ export default (state, action) => {
                 ...state,
                 posts: action.payload
             }
+        case 'ADD_POST':
+            return {
+                ...state,
+                posts: [...state.posts, action.payload]
+            }
         case 'LOGIN_USER':
             return {
                ...state,

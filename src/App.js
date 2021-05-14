@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/" component= { PostsList }></Route>
           <Route path="/auth/register" component= { Register }></Route>
           <Route path="/auth/login" component= { Login }></Route>
+          {/* protected route */}
           <Route path="/post/add" component= { AddPost }></Route>
         </Switch>
       </Router>

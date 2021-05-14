@@ -20,7 +20,7 @@ export const Header = () => {
                     <Link to="/">
                         <li>Home</li>
                     </Link>
-                    <Link to="/">
+                    <Link exact to="/">
                         <li><button onClick={handleLogout}>Logout</button></li> 
                     </Link>
                 </ul>
