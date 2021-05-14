@@ -25,7 +25,7 @@ export const PostsList = () => {
             {newPost()}
 
             <ul>
-                {posts.map(post => (<Post key={post._id} post={post}></Post>))}
+                {posts ? posts.map(post => (<Post key={Math.random() + (100 - 1) + 1} post={post}></Post>)) : 'no posts'}
             </ul>
             
         </div>
