@@ -9,8 +9,12 @@ const initialState = {
         //     _id: 42069,
         //     title: "hi",
         //     text: 'u are gay'
+        // comments: [
+
+        // ]
         // }
     ],
+    comments: [],
     loggedIn: false
 }
 
@@ -122,16 +126,37 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    async function addComment(comment) {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+            const res = await axios.post('http://localhost:5000/posts/:id/addComment', comment, config)
+            dispatch({
+                type: 'ADD_COMMENT',
+                payload: res.data
+            })
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <GlobalContext.Provider value={{
             users: state.users,
             loggedIn: state.loggedIn,
             posts: state.posts,
+            comments: state.comments,
             registerUser,
             loginUser,
             logoutUser,
             getPosts,
-            addPost
+            addPost,
+            addComment
         }}>
             {children}
         </GlobalContext.Provider>

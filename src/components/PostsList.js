@@ -28,16 +28,14 @@ export const PostsList = () => {
                 {newPost()}
 
                 <ul className="post-list">
-                    {posts ? posts.map(post => (
+                    {posts.length ? posts.map(post => (
                         <li key={post._id} className="post">
                             <Link to={`/post/${post._id}`}>{post.title}</Link>
                         </li>
-                    )) : 'no posts'}
+                    )) : 'There are no existing posts!'}
                 </ul>
             </div>
         </div>
     )
 }
-
-{/* <Post key={Math.random() + (100 - 1) + 1} post={post}></Post> */}
         

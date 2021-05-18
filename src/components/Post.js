@@ -1,28 +1,40 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import { Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom'
-
+import axios from 'axios'
 
 
 export const Post = () => {
 
-    const { posts, getPosts, loggedIn } = useContext(GlobalContext)
+    const { addComment } = useContext(GlobalContext)
+
+    const [currentPost, setCurrentPost] = useState({})
+    const [comment, setComment] = useState({})
+
+    let postId = useParams()
 
     useEffect(()=>{
-        getPosts()
+        getAPost()
     }, [])
 
-    let { id } = useParams()
+    const getAPost = async() => {
+        const res = await axios.get(`http://localhost:5000/posts/${postId.id}`)
+        setCurrentPost(res.data)
+    }
 
     let { url } = useRouteMatch()
-    console.log(url)
 
-    let currentPost = posts.filter(post => post._id === id)
-    console.log(currentPost)
 
-    // useEffect(() => {
-    //     const currentPost = posts.filter(post => post._id === id)
-    // }, [])
+    const handleComment = (e) => {
+        e.preventDefault()
+
+        const newComment = {
+            body: comment,
+        }
+        console.log(newComment)
+
+        addComment(newComment)
+    }
 
     return (
         <div className="post-page">
@@ -31,6 +43,14 @@ export const Post = () => {
 
             <Link to={`${url}/edit`}>Edit</Link> 
             <Link to={`${url}/info`}>Info</Link> 
+
+            <form onSubmit={handleComment}>
+
+                <label htmlFor="comment">Leave a comment.</label>
+                <textarea name="comment" id="comment" onChange={(e)=>setComment(e.target.value)}></textarea>
+                <button type="submit">Submit</button>
+
+            </form>
 
         </div>
     )

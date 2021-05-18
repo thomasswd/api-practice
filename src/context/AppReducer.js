@@ -20,11 +20,16 @@ export default (state, action) => {
                 ...state,
                 posts: [...state.posts, action.payload]
             }
+        case 'ADD_COMMENT':
+            return {
+                ...state,
+                comments: [...state.comments, action.payload]
+            }
         case 'LOGIN_USER':
             return {
                ...state,
                 loggedIn: true
-              }
+            }
         case 'LOGOUT_USER':
             return {
                 ...state,
