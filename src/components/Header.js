@@ -14,8 +14,8 @@ export const Header = () => {
         }
 
         return (
-            <nav>
-                <ul>
+            <nav className="navbar">
+                <ul className="nav-items">
                     <UserGreeting />
                     <Link to="/">
                         <li>Home</li>
@@ -30,8 +30,8 @@ export const Header = () => {
 
     const LoggedOutNav = () => {
         return (
-            <nav>
-                <ul>
+            <nav className="navbar">
+                <ul className="nav-items">
                     <GuestGreeting />
                     <Link to="/">
                         <li>Home</li>

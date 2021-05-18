@@ -6,8 +6,9 @@ import { PostsList } from './components/PostsList'
 import { Register } from './components/Register'
 import { Login } from './components/Login'
 import { AddPost } from './components/AddPost'
-
+import { Post } from './components/Post'
 import { GlobalProvider } from './context/GlobalState'
+import { EditPost } from './components/EditPost'
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/auth/login" component= { Login }></Route>
           {/* protected route */}
           <Route path="/post/add" component= { AddPost }></Route>
+          <Route exact path="/post/:id" component= { Post }></Route>
+          <Route path="/post/:id/edit" component={ EditPost }></Route>
         </Switch>
       </Router>
     </GlobalProvider>

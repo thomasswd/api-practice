@@ -8,9 +8,11 @@ export const PostsList = () => {
 
     const { posts, getPosts, loggedIn } = useContext(GlobalContext)
 
+    console.log(posts)
+
     useEffect(() => {
         getPosts()
-    })
+    }, [])
 
     const newPost = () => {
         if(loggedIn) {
@@ -19,15 +21,23 @@ export const PostsList = () => {
     }
 
     return (
-        <div>
-            <h1>Posts</h1>
+        <div className="posts-page">
+            <div className="posts-container">
+                <h1>Posts</h1>
 
-            {newPost()}
+                {newPost()}
 
-            <ul>
-                {posts ? posts.map(post => (<Post key={Math.random() + (100 - 1) + 1} post={post}></Post>)) : 'no posts'}
-            </ul>
-            
+                <ul className="post-list">
+                    {posts ? posts.map(post => (
+                        <li key={post._id} className="post">
+                            <Link to={`/post/${post._id}`}>{post.title}</Link>
+                        </li>
+                    )) : 'no posts'}
+                </ul>
+            </div>
         </div>
     )
 }
+
+{/* <Post key={Math.random() + (100 - 1) + 1} post={post}></Post> */}
+        

@@ -5,10 +5,11 @@ import axios from 'axios'
 const initialState = {
     users: [],
     posts: [
-        {
-            title: "hi",
-            text: 'u are gay'
-        }
+        // {
+        //     _id: 42069,
+        //     title: "hi",
+        //     text: 'u are gay'
+        // }
     ],
     loggedIn: false
 }
